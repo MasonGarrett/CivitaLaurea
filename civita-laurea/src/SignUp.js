@@ -166,7 +166,6 @@ export default function SignUp() {
               </form>
             </div>
             <Box mt={5}>
-              <Copyright />
             </Box>
           </Container>
         </>
