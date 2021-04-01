@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useSelector } from 'react-redux';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
 import { selectUser } from './features/userSlice';
 
 function HomeScreen() {
@@ -29,12 +29,25 @@ function HomeScreen() {
     },
   }));
 
+  db.collection('users')
+    .doc(user.uid)
+    .get()
+    .then((doc) => {
+      const html = `
+      <h3>First Name: ${doc.data().fname}</h3>
+      <h3>Last Name: ${doc.data().lname}</h3>
+      <h3>Account Type: ${doc.data().accountType}</h3>
+      `;
+      document.getElementById('accountInfo').innerHTML = html;
+    });
+
   const classes = useStyles();
   return (
     <div>
       <Container component="main" maxWidth="xs">
         <h1>Welcome!</h1>
         <h2>Email: {user.email}</h2>
+        <div id="accountInfo" />
         <Button
           type="submit"
           fullWidth

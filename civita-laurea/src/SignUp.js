@@ -3,6 +3,10 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import FormLabel from '@material-ui/core/FormLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
@@ -12,7 +16,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
 // eslint-disable-next-line import/no-cycle
 import SignIn from './SignIn';
 
@@ -53,8 +57,11 @@ export default function SignUp() {
   const classes = useStyles();
 
   const [signUp, setSignUp] = useState(false);
+  const [firstNameValue, setFirstNameValue] = useState('');
+  const [lastNameValue, setLastNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const [roleValue, setRoleValue] = useState('');
 
   const register = (e) => {
     e.preventDefault();
@@ -62,6 +69,13 @@ export default function SignUp() {
     auth
       .createUserWithEmailAndPassword(emailValue, passwordValue)
       .then((authUser) => {
+        db.collection('users').doc(authUser.user.uid).set({
+          fname: firstNameValue,
+          lname: lastNameValue,
+          accountType: roleValue,
+        });
+      })
+      .then(() => {
         <SignIn />;
       })
       .catch((error) => {
@@ -95,6 +109,8 @@ export default function SignUp() {
                       fullWidth
                       id="firstName"
                       label="First Name"
+                      onChange={(e) => setFirstNameValue(e.target.value)}
+                      value={firstNameValue}
                       autoFocus
                     />
                   </Grid>
@@ -107,6 +123,8 @@ export default function SignUp() {
                       label="Last Name"
                       name="lastName"
                       autoComplete="lname"
+                      onChange={(e) => setLastNameValue(e.target.value)}
+                      value={lastNameValue}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -121,6 +139,29 @@ export default function SignUp() {
                       onChange={(e) => setEmailValue(e.target.value)}
                       value={emailValue}
                     />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">Account Role</FormLabel>
+                      <RadioGroup
+                        aria-label="Account Role"
+                        name="student"
+                        required
+                        value={roleValue}
+                        onChange={(e) => setRoleValue(e.target.value)}
+                      >
+                        <FormControlLabel
+                          value="student"
+                          control={<Radio />}
+                          label="Student"
+                        />
+                        <FormControlLabel
+                          value="instructor"
+                          control={<Radio />}
+                          label="Instructor"
+                        />
+                      </RadioGroup>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
