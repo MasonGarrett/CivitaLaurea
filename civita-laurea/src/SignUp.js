@@ -12,15 +12,16 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { auth } from "./firebase";
-import SignIn from "./SignIn";
+import { auth } from './firebase';
+// eslint-disable-next-line import/no-cycle
+import SignIn from './SignIn';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="http://civitalaurea.com/">
+        Civita Laurea
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -59,12 +60,9 @@ export default function SignUp() {
     e.preventDefault();
 
     auth
-      .createUserWithEmailAndPassword(
-        emailValue,
-        passwordValue
-      )
+      .createUserWithEmailAndPassword(emailValue, passwordValue)
       .then((authUser) => {
-        <SignIn />
+        <SignIn />;
       })
       .catch((error) => {
         alert(error.message);
@@ -78,7 +76,6 @@ export default function SignUp() {
       ) : (
         <>
           <Container component="main" maxWidth="xs">
-
             <CssBaseline />
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
@@ -86,7 +83,7 @@ export default function SignUp() {
               </Avatar>
               <Typography component="h1" variant="h5">
                 Sign up
-        </Typography>
+              </Typography>
               <form className={classes.form} noValidate>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
@@ -141,7 +138,9 @@ export default function SignUp() {
                   </Grid>
                   <Grid item xs={12}>
                     <FormControlLabel
-                      control={<Checkbox value="allowExtraEmails" color="primary" />}
+                      control={
+                        <Checkbox value="allowExtraEmails" color="primary" />
+                      }
                       label="I want to receive inspiration, marketing promotions and updates via email."
                     />
                   </Grid>
@@ -155,18 +154,22 @@ export default function SignUp() {
                   onClick={register}
                 >
                   Sign Up
-          </Button>
+                </Button>
                 <Grid container justify="flex-end">
                   <Grid item>
-                    <Link href="#" onClick={() => setSignUp(true)} variant="body2">
+                    <Link
+                      href="#"
+                      onClick={() => setSignUp(true)}
+                      variant="body2"
+                    >
                       Already have an account? Sign in
-              </Link>
+                    </Link>
                   </Grid>
                 </Grid>
               </form>
             </div>
-            <Box mt={5}>
-            </Box>
+            <Box mt={5} />
+            <Copyright />
           </Container>
         </>
       )}

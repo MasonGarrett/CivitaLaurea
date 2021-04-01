@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import SignIn from './SignIn';
 import HomeScreen from './HomeScreen';
 import { auth } from './firebase';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUser } from "./features/userSlice";
+import { login, logout, selectUser } from './features/userSlice';
 import './App.css';
 
 function App() {
@@ -14,10 +14,12 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-        dispatch(login({
-          uid: userAuth.uid,
-          email: userAuth.email,
-        }));
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          })
+        );
       } else {
         dispatch(logout());
       }
