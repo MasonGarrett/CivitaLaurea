@@ -62,6 +62,7 @@ export default function SignUp() {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [roleValue, setRoleValue] = useState('');
+  const [emailListingValue, setEmailListingValue] = useState('false');
 
   const register = (e) => {
     e.preventDefault();
@@ -73,6 +74,7 @@ export default function SignUp() {
           fname: firstNameValue,
           lname: lastNameValue,
           accountType: roleValue,
+          emailListing: emailListingValue,
         });
       })
       .then(() => {
@@ -180,7 +182,11 @@ export default function SignUp() {
                   <Grid item xs={12}>
                     <FormControlLabel
                       control={
-                        <Checkbox value="allowExtraEmails" color="primary" />
+                        <Checkbox
+                          value="true"
+                          color="primary"
+                          onChange={(e) => setEmailListingValue(e.target.value)}
+                        />
                       }
                       label="I want to receive inspiration, marketing promotions and updates via email."
                     />
