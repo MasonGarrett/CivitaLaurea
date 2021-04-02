@@ -23,22 +23,22 @@ import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 
 const categories = [
   {
-    id: 'Develop',
+    id: 'Main Tools',
     children: [
-      { id: 'Authentication', icon: <PeopleIcon />, active: true },
-      { id: 'Database', icon: <DnsRoundedIcon /> },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon /> },
-      { id: 'Hosting', icon: <PublicIcon /> },
-      { id: 'Functions', icon: <SettingsEthernetIcon /> },
-      { id: 'ML Kit', icon: <SettingsInputComponentIcon /> },
+      { id: 'Courses', icon: <DnsRoundedIcon /> },
+      { id: 'Community', icon: <PeopleIcon />, active: true },
+      { id: 'Nav1', icon: <PermMediaOutlinedIcon /> },
+      { id: 'Nav2', icon: <PublicIcon /> },
+      { id: 'Nav3', icon: <SettingsEthernetIcon /> },
+      { id: 'Nav4', icon: <SettingsInputComponentIcon /> },
     ],
   },
   {
-    id: 'Quality',
+    id: 'Secondary Tools',
     children: [
-      { id: 'Analytics', icon: <SettingsIcon /> },
-      { id: 'Performance', icon: <TimerIcon /> },
-      { id: 'Test Lab', icon: <PhonelinkSetupIcon /> },
+      { id: 'Nav1', icon: <SettingsIcon /> },
+      { id: 'Nav2', icon: <TimerIcon /> },
+      { id: 'Nav3', icon: <PhonelinkSetupIcon /> },
     ],
   },
 ];
@@ -93,9 +93,6 @@ function Navigator(props) {
         <ListItem
           className={clsx(classes.firebase, classes.item, classes.itemCategory)}
         >
-          Paperbase
-        </ListItem>
-        <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
             <HomeIcon />
           </ListItemIcon>
@@ -104,7 +101,7 @@ function Navigator(props) {
               primary: classes.itemPrimary,
             }}
           >
-            Project Overview
+            Civita Laurea
           </ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
