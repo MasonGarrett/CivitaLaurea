@@ -18,7 +18,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import HomeScreen from '../HomeScreen';
+import { useHistory } from 'react-router-dom';
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
@@ -46,6 +46,12 @@ const styles = (theme) => ({
 
 function Header(props) {
   const { classes, onDrawerToggle } = props;
+
+  const history = useHistory();
+  const routeChange = () => {
+    const path = '/profile';
+    history.push(path);
+  };
 
   return (
     <>
@@ -78,7 +84,11 @@ function Header(props) {
               </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton color="inherit" className={classes.iconButtonAvatar}>
+              <IconButton
+                onClick={routeChange}
+                color="inherit"
+                className={classes.iconButtonAvatar}
+              >
                 <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
               </IconButton>
             </Grid>

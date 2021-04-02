@@ -38,7 +38,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Paperbase />
-              {/* <HomeScreen /> */}
+            </Route>
+            <Route exact path="/profile">
+              <HomeScreen />
             </Route>
           </Switch>
         )}
