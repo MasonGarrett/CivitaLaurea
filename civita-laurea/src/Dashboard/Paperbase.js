@@ -16,6 +16,7 @@ import Fab from '@material-ui/core/Fab';
 import Navigator from './Navigator';
 import Header from './Header';
 import TitlebarGridList from '../Components/InstructorCourses';
+import CourseForm from '../Components/CourseForm';
 
 function Copyright() {
   return (
@@ -202,7 +203,7 @@ function Paperbase(props) {
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
             <div>
-              <div>
+              {/* <div>
                 <Tooltip title="Add Course" aria-label="add">
                   <Fab color="primary" className={classes.fab}>
                     <AddIcon />
@@ -210,7 +211,8 @@ function Paperbase(props) {
                 </Tooltip>
                 <h1 className={classes.addCourse}>Add Course</h1>
               </div>
-              <TitlebarGridList />
+              <TitlebarGridList /> */}
+              <CourseForm />
             </div>
           </main>
           <footer className={classes.footer}>
