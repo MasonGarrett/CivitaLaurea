@@ -5,6 +5,8 @@ import SignIn from './SignIn';
 import HomeScreen from './HomeScreen';
 import { auth } from './firebase';
 import { login, logout, selectUser } from './features/userSlice';
+// eslint-disable-next-line import/named
+import Paperbase from './Dashboard/Paperbase';
 import './App.css';
 
 function App() {
@@ -35,7 +37,8 @@ function App() {
         ) : (
           <Switch>
             <Route exact path="/">
-              <HomeScreen />
+              <Paperbase />
+              {/* <HomeScreen /> */}
             </Route>
           </Switch>
         )}
