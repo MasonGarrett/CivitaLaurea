@@ -10,9 +10,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Tooltip from '@material-ui/core/Tooltip';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 import Navigator from './Navigator';
-import Content from './Content';
 import Header from './Header';
+import TitlebarGridList from '../Components/InstructorCourses';
 
 function Copyright() {
   return (
@@ -161,8 +164,12 @@ const styles = {
     background: '#eaeff1',
   },
   footer: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     background: '#eaeff1',
+  },
+  addCourse: {
+    display: 'inline',
+    marginLeft: '10px',
   },
 };
 
@@ -194,7 +201,17 @@ function Paperbase(props) {
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
-            <Content />
+            <div>
+              <div>
+                <Tooltip title="Add Course" aria-label="add">
+                  <Fab color="primary" className={classes.fab}>
+                    <AddIcon />
+                  </Fab>
+                </Tooltip>
+                <h1 className={classes.addCourse}>Add Course</h1>
+              </div>
+              <TitlebarGridList />
+            </div>
           </main>
           <footer className={classes.footer}>
             <Copyright />

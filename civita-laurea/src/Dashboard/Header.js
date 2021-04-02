@@ -106,7 +106,7 @@ function Header(props) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Authentication
+                Instructor Page
               </Typography>
             </Grid>
             <Grid item>
@@ -137,10 +137,10 @@ function Header(props) {
         elevation={0}
       >
         <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Sign-in method" />
-          <Tab textColor="inherit" label="Templates" />
-          <Tab textColor="inherit" label="Usage" />
+          <Tab textColor="inherit" label="Courses" />
+          <Tab textColor="inherit" label="Feedback" />
+          <Tab textColor="inherit" label="Stats" />
+          <Tab textColor="inherit" label="Messages" />
         </Tabs>
       </AppBar>
     </>

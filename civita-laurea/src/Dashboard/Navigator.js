@@ -25,8 +25,8 @@ const categories = [
   {
     id: 'Main Tools',
     children: [
-      { id: 'Courses', icon: <DnsRoundedIcon /> },
-      { id: 'Community', icon: <PeopleIcon />, active: true },
+      { id: 'Courses', icon: <DnsRoundedIcon />, active: true },
+      { id: 'Community', icon: <PeopleIcon /> },
       { id: 'Nav1', icon: <PermMediaOutlinedIcon /> },
       { id: 'Nav2', icon: <PublicIcon /> },
       { id: 'Nav3', icon: <SettingsEthernetIcon /> },
