@@ -43,11 +43,18 @@ export default function CourseForm() {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form
+      className={classes.root}
+      onSubmit={(e) => {
+        // e.preventDefault();
+        alert('Course Created!');
+      }}
+    >
       <h2>Create Course</h2>
       <br />
       <TextField
-        id="outlined-multiline-flexible"
+        required
+        id="outlined-multiline-flexible-required"
         label="Course Title"
         multiline
         rowsMax={4}
@@ -94,6 +101,7 @@ export default function CourseForm() {
           size="large"
           color="primary"
           className={classes.margin}
+          type="submit"
         >
           Create Course
         </Button>

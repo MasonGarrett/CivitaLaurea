@@ -182,6 +182,31 @@ function Paperbase(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const [createCourse, setCreateCourse] = React.useState(false);
+
+  let currentMain;
+  if (createCourse === true) {
+    currentMain = <CourseForm />;
+  } else {
+    currentMain = (
+      <div>
+        <div>
+          <Tooltip
+            onClick={() => setCreateCourse(true)}
+            title="Add Course"
+            aria-label="add"
+          >
+            <Fab color="primary" className={classes.fab}>
+              <AddIcon />
+            </Fab>
+          </Tooltip>
+          <h1 className={classes.addCourse}>Add Course</h1>
+        </div>
+        <TitlebarGridList />
+      </div>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -202,18 +227,7 @@ function Paperbase(props) {
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
-            <div>
-              {/* <div>
-                <Tooltip title="Add Course" aria-label="add">
-                  <Fab color="primary" className={classes.fab}>
-                    <AddIcon />
-                  </Fab>
-                </Tooltip>
-                <h1 className={classes.addCourse}>Add Course</h1>
-              </div>
-              <TitlebarGridList /> */}
-              <CourseForm />
-            </div>
+            <div>{currentMain}</div>
           </main>
           <footer className={classes.footer}>
             <Copyright />
