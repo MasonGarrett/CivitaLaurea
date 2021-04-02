@@ -53,8 +53,14 @@ const tileData = [
   },
   {
     img:
-      'https://www.thegreatcoursesplus.com/media/catalog/product/1/0/1014.jpg',
-    title: 'Fundamentals of Math',
+      'https://www.gqrgm.com/wp-content/uploads/2019/09/2.-Blog-Banner-Template.jpg',
+    title: 'Programming Basics',
+    author: 'Joe Bob',
+  },
+  {
+    img:
+      'https://blogs.biomedcentral.com/on-biology/wp-content/uploads/sites/5/2017/12/DNA.png',
+    title: 'Biology 101',
     author: 'Joe Bob',
   },
   {
@@ -65,14 +71,8 @@ const tileData = [
   },
   {
     img:
-      'https://www.thegreatcoursesplus.com/media/catalog/product/1/0/1014.jpg',
-    title: 'Fundamentals of Math',
-    author: 'Joe Bob',
-  },
-  {
-    img:
-      'https://www.thegreatcoursesplus.com/media/catalog/product/1/0/1014.jpg',
-    title: 'Fundamentals of Math',
+      'https://www.gqrgm.com/wp-content/uploads/2019/09/2.-Blog-Banner-Template.jpg',
+    title: 'Programming Basics',
     author: 'Joe Bob',
   },
 ];
