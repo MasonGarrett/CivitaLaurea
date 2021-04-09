@@ -45,7 +45,7 @@ export default function CourseForm() {
   return (
     <form
       className={classes.root}
-      onSubmit={(e) => {
+      onSubmit={() => {
         // e.preventDefault();
         alert('Course Created!');
       }}

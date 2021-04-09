@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 // eslint-disable-next-line import/no-cycle
 import SignUp from './SignUp';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 
 function Copyright() {
   return (
