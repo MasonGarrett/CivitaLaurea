@@ -16,9 +16,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Navigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
-// eslint-disable-next-line import/no-cycle
-import SignIn from './SignIn';
 
 function Copyright() {
   return (
@@ -78,7 +77,7 @@ export default function SignUp() {
         });
       })
       .then(() => {
-        <SignIn />;
+        <Navigate to="/login" />;
       })
       .catch((error) => {
         alert(error.message);
@@ -88,7 +87,7 @@ export default function SignUp() {
   return (
     <div>
       {signUp ? (
-        <SignIn />
+        <Navigate to="/login" />
       ) : (
         <>
           <Container component="main" maxWidth="xs">

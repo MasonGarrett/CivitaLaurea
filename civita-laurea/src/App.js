@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRoutes, Route, Routes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core';
 import routes from './routes';
@@ -9,7 +9,6 @@ import GlobalStyles from './components/GlobalStyles';
 import { auth } from './firebase';
 import { login, logout, selectUser } from './features/userSlice';
 import './App.css';
-import SignIn from './pages/SignIn';
 
 const App = () => {
   const user = useSelector(selectUser);
