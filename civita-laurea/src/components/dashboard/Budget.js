@@ -16,10 +16,10 @@ const Budget = (props) => (
       <Grid container spacing={3} sx={{ justifyContent: 'space-between' }}>
         <Grid item>
           <Typography color="textSecondary" gutterBottom variant="h6">
-            BUDGET
+            STUDENT THUMBS DOWN
           </Typography>
           <Typography color="textPrimary" variant="h3">
-            $24,000
+            {/* $24,000 */}
           </Typography>
         </Grid>
         <Grid item>
