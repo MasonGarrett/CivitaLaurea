@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+import { Box, Button, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,98 +15,99 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CourseForm() {
   const classes = useStyles();
-  const [courseTitle, setCourseTitle] = React.useState(
-    'Course Title Placeholder'
-  );
+  const [courseTitle, setCourseTitle] = React.useState('');
 
   const handleCourseTitleChange = (event) => {
     setCourseTitle(event.target.value);
   };
 
-  const [courseDescription, setCourseDescription] = React.useState(
-    'Course Description Placeholder'
-  );
+  const [courseDescription, setCourseDescription] = React.useState('');
 
   const handleCourseDescriptionChange = (event) => {
     setCourseDescription(event.target.value);
   };
 
-  const [courseStartDate, setCourseStartDate] = React.useState('2021-09-07');
+  const [courseStartDate, setCourseStartDate] = React.useState('');
 
   const handleCourseStartDate = (event) => {
     setCourseStartDate(event.target.value);
   };
 
-  const [courseEndDate, setCourseEndDate] = React.useState('2021-12-22');
+  const [courseEndDate, setCourseEndDate] = React.useState('');
 
   const handleCourseEndDate = (event) => {
     setCourseEndDate(event.target.value);
   };
 
   return (
-    <form
-      className={classes.root}
-      onSubmit={() => {
-        // e.preventDefault();
-        alert('Course Created!');
-      }}
-    >
-      <h2>Create Course</h2>
-      <br />
-      <TextField
-        required
-        id="outlined-multiline-flexible-required"
-        label="Course Title"
-        multiline
-        rowsMax={4}
-        value={courseTitle}
-        onChange={handleCourseTitleChange}
-        variant="outlined"
-      />
-      <TextField
-        id="outlined-multiline-static"
-        label="Description"
-        multiline
-        rows={4}
-        value={courseDescription}
-        onChange={handleCourseDescriptionChange}
-        variant="outlined"
-      />
-      <TextField
-        id="date"
-        label="Course Start Date"
-        type="date"
-        value={courseStartDate}
-        onChange={handleCourseStartDate}
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
+    <Box sx={{ m: 5 }}>
+      <form
+        className={classes.root}
+        onSubmit={(e) => {
+          e.preventDefault();
+          alert('Course Created!');
         }}
-      />
-      <TextField
-        id="date"
-        label="Course End Date"
-        type="date"
-        value={courseEndDate}
-        onChange={handleCourseEndDate}
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-      <br />
-      <br />
-      <div>
-        <Button
-          variant="contained"
-          size="large"
-          color="primary"
-          className={classes.margin}
-          type="submit"
-        >
-          Create Course
-        </Button>
-      </div>
-    </form>
+      >
+        <h2>Create Course</h2>
+        <br />
+        <TextField
+          required
+          id="outlined-multiline-flexible-required"
+          label="Course Title"
+          multiline
+          rowsMax={4}
+          value={courseTitle}
+          onChange={handleCourseTitleChange}
+          variant="outlined"
+        />
+        <TextField
+          required
+          id="outlined-multiline-static"
+          label="Description"
+          multiline
+          rows={4}
+          value={courseDescription}
+          onChange={handleCourseDescriptionChange}
+          variant="outlined"
+        />
+        <TextField
+          required
+          id="date"
+          label="Course Start Date"
+          type="date"
+          value={courseStartDate}
+          onChange={handleCourseStartDate}
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField
+          required
+          id="date"
+          label="Course End Date"
+          type="date"
+          value={courseEndDate}
+          onChange={handleCourseEndDate}
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <br />
+        <br />
+        <div>
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            className={classes.margin}
+            type="submit"
+          >
+            Create Course
+          </Button>
+        </div>
+      </form>
+    </Box>
   );
 }
