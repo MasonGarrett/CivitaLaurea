@@ -7,6 +7,7 @@ import TotalProfit from '../components/dashboard/TotalProfit';
 import TrafficByDevice from '../components/dashboard/TrafficByDevice';
 import LatestProducts from '../components/dashboard/LatestProducts';
 import LatestOrders from '../components/dashboard/LatestOrders';
+import LatestCourses from '../components/dashboard/LatestCourses';
 import Budget from '../components/dashboard/Budget';
 
 const Dashboard = () => (
@@ -32,20 +33,20 @@ const Dashboard = () => (
           <Grid item lg={3} sm={6} xl={3} xs={12}>
             <TasksProgress />
           </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
+          {/* <Grid item lg={3} sm={6} xl={3} xs={12}>
             <TotalProfit sx={{ height: '100%' }} />
-          </Grid>
+          </Grid> */}
           <Grid item lg={8} md={12} xl={9} xs={12}>
             <Sales />
           </Grid>
-          <Grid item lg={4} md={6} xl={3} xs={12}>
+          {/* <Grid item lg={4} md={6} xl={3} xs={12}>
             <TrafficByDevice sx={{ height: '100%' }} />
-          </Grid>
-          <Grid item lg={4} md={6} xl={3} xs={12}>
+          </Grid> */}
+          {/* <Grid item lg={4} md={6} xl={3} xs={12}>
             <LatestProducts sx={{ height: '100%' }} />
-          </Grid>
+          </Grid> */}
           <Grid item lg={8} md={12} xl={9} xs={12}>
-            <LatestOrders />
+            <LatestCourses />
           </Grid>
         </Grid>
       </Container>

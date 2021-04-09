@@ -74,6 +74,7 @@ export default function SignUp() {
           lname: lastNameValue,
           accountType: roleValue,
           emailListing: emailListingValue,
+          courses: [],
         });
       })
       .then(() => {

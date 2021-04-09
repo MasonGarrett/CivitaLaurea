@@ -2,6 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useSelector } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { db } from '../firebase';
+import { selectUser } from '../features/userSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,15 +18,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CourseForm() {
   const classes = useStyles();
-  const [courseTitle, setCourseTitle] = React.useState(
+  const [courseTitleValue, setCourseTitle] = React.useState(
     'Course Title Placeholder'
   );
+
+  const user = useSelector(selectUser);
 
   const handleCourseTitleChange = (event) => {
     setCourseTitle(event.target.value);
   };
 
-  const [courseDescription, setCourseDescription] = React.useState(
+  const [courseDescriptionValue, setCourseDescription] = React.useState(
     'Course Description Placeholder'
   );
 
@@ -45,8 +51,30 @@ export default function CourseForm() {
   return (
     <form
       className={classes.root}
-      onSubmit={() => {
-        // e.preventDefault();
+      onSubmit={(e) => {
+        e.preventDefault();
+        const course = uuid();
+        db.collection('courses').doc(course).set({
+          coureTitle: courseTitleValue,
+          courseDescription: courseDescriptionValue,
+          courseStart: courseStartDate,
+          courseEnd: courseEndDate,
+        });
+
+        db.collection('users')
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            const userCourses = doc.data().courses;
+            const newUserCourses = [...userCourses];
+            newUserCourses.push(course);
+            db.collection('users').doc(user.uid).set(
+              {
+                courses: newUserCourses,
+              },
+              { merge: true }
+            );
+          });
         alert('Course Created!');
       }}
     >
@@ -58,7 +86,7 @@ export default function CourseForm() {
         label="Course Title"
         multiline
         rowsMax={4}
-        value={courseTitle}
+        value={courseTitleValue}
         onChange={handleCourseTitleChange}
         variant="outlined"
       />
@@ -67,7 +95,7 @@ export default function CourseForm() {
         label="Description"
         multiline
         rows={4}
-        value={courseDescription}
+        value={courseDescriptionValue}
         onChange={handleCourseDescriptionChange}
         variant="outlined"
       />
