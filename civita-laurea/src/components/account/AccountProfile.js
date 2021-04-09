@@ -14,7 +14,7 @@ const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   city: 'Los Angeles',
   country: 'USA',
-  jobTitle: 'Senior Developer',
+  jobTitle: 'Instructor',
   name: 'Katarina Smith',
   timezone: 'GTM-7',
 };

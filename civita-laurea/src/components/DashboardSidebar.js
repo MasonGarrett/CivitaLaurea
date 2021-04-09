@@ -25,7 +25,7 @@ import NavItem from './NavItem';
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
+  jobTitle: 'Instructor',
   name: 'Katarina Smith',
 };
 
@@ -38,12 +38,12 @@ const items = [
   {
     href: '/app/customers',
     icon: UsersIcon,
-    title: 'Customers',
+    title: 'Students',
   },
   {
     href: '/app/products',
     icon: ShoppingBagIcon,
-    title: 'Products',
+    title: 'Courses',
   },
   {
     href: '/app/account',
@@ -128,36 +128,6 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box sx={{ flexGrow: 1 }} />
-      <Box
-        sx={{
-          backgroundColor: 'background.default',
-          m: 2,
-          p: 2,
-        }}
-      >
-        <Typography align="center" gutterBottom variant="h4">
-          Need more?
-        </Typography>
-        <Typography align="center" variant="body2">
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            pt: 2,
-          }}
-        >
-          <Button
-            color="primary"
-            component="a"
-            href="https://react-material-kit.devias.io"
-            variant="contained"
-          >
-            See PRO version
-          </Button>
-        </Box>
-      </Box>
     </Box>
   );
 

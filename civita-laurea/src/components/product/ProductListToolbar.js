@@ -8,6 +8,7 @@ import {
   SvgIcon,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import { Link as RouterLink } from 'react-router-dom';
 
 const ProductListToolbar = (props) => (
   <Box {...props}>
@@ -19,8 +20,13 @@ const ProductListToolbar = (props) => (
     >
       <Button>Import</Button>
       <Button sx={{ mx: 1 }}>Export</Button>
-      <Button color="primary" variant="contained">
-        Add product
+      <Button
+        component={RouterLink}
+        to="/app/create-course"
+        color="primary"
+        variant="contained"
+      >
+        Add Course
       </Button>
     </Box>
     <Box sx={{ mt: 3 }}>
@@ -38,7 +44,7 @@ const ProductListToolbar = (props) => (
                   </InputAdornment>
                 ),
               }}
-              placeholder="Search product"
+              placeholder="Search Course"
               variant="outlined"
             />
           </Box>

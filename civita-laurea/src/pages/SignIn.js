@@ -61,6 +61,7 @@ export default function SignIn() {
     auth
       .signInWithEmailAndPassword(emailValue, passwordValue)
       .then((authUser) => {
+        // This is where something happens after user is authenticated
         console.log(authUser);
       })
       .catch((error) => {

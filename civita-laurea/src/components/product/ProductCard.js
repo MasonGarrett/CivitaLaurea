@@ -65,14 +65,14 @@ const ProductCard = ({ product, ...rest }) => (
             display: 'flex',
           }}
         >
-          <GetAppIcon color="action" />
+          {/* <GetAppIcon color="action" /> */}
           <Typography
             color="textSecondary"
             display="inline"
             sx={{ pl: 1 }}
             variant="body2"
           >
-            {product.totalDownloads} Downloads
+            {product.totalDownloads} Students
           </Typography>
         </Grid>
       </Grid>

@@ -9,6 +9,7 @@ import Settings from './pages/Settings';
 import SignIn from './pages/SignIn';
 import DashboardLayout from './components/DashboardLayout';
 import SignUp from './pages/SignUp';
+import CourseForm from './components/CourseForm';
 
 const routes = (isLoggedIn) => [
   {
@@ -19,6 +20,7 @@ const routes = (isLoggedIn) => [
       { path: 'customers', element: <CustomerList /> },
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'products', element: <ProductList /> },
+      { path: 'create-course', element: <CourseForm /> },
       { path: 'settings', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> },
     ],
