@@ -18,7 +18,6 @@ const LatestOrders = (props) => (
     <Divider />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>
-        {' '}
         <Container maxWidth={false}>
           <Box sx={{ pt: 3 }}>
             <Grid container spacing={3}>
