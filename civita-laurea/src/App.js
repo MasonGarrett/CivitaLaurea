@@ -11,9 +11,12 @@ import { login, logout, selectUser } from './features/userSlice';
 import './App.css';
 
 const App = () => {
-  const user = useSelector(selectUser);
+  const user = useSelector(async () => {
+    await selectUser;
+  });
   const dispatch = useDispatch();
   const routing = useRoutes(routes(user));
+  console.log(user);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
