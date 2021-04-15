@@ -21,26 +21,16 @@ function AvailableCourses() {
   const user = useSelector(selectUser);
   const [courses, setCourses] = useState([]);
 
-  const fetchUser = async () => {
-    const response = db.collection('users');
+  const fetchCourses = async () => {
+    const response = db.collection('courses');
     const data = await response.get();
-    data.docs.forEach((userr) => {
-      if (userr.id === user.uid) {
-        const userCourses = userr.data().courses;
-        for (let i = 0; i < userCourses.length; i += 1) {
-          db.collection('courses')
-            .doc(userCourses[i])
-            .get()
-            .then((docCourse) => {
-              setCourses((prev) => [...prev, ...courses, docCourse.data()]);
-            });
-        }
-      }
+    data.docs.forEach((course) => {
+      setCourses((prev) => [...prev, ...courses, course.data()]);
     });
   };
 
   useEffect(() => {
-    fetchUser();
+    fetchCourses();
   }, []);
 
   return (
