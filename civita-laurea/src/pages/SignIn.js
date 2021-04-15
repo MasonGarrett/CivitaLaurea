@@ -134,7 +134,8 @@ export default function SignIn() {
                   <Grid item>
                     <Link
                       href="/register"
-                      onClick={() => setSignIn(true)}
+                      // this causes double load
+                      // onClick={() => setSignIn(true)}
                       variant="body2"
                     >
                       Don't have an account? Sign Up

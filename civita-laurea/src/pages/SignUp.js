@@ -16,7 +16,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 
 function Copyright() {
@@ -62,6 +62,7 @@ export default function SignUp() {
   const [passwordValue, setPasswordValue] = useState('');
   const [roleValue, setRoleValue] = useState('');
   const [emailListingValue, setEmailListingValue] = useState('false');
+  const navigate = useNavigate();
 
   const register = (e) => {
     e.preventDefault();
@@ -78,7 +79,7 @@ export default function SignUp() {
         });
       })
       .then(() => {
-        <Navigate to="/login" />;
+        navigate('/');
       })
       .catch((error) => {
         alert(error.message);
@@ -205,8 +206,9 @@ export default function SignUp() {
                 <Grid container justify="flex-end">
                   <Grid item>
                     <Link
-                      href="#"
-                      onClick={() => setSignUp(true)}
+                      href="/login"
+                      // this causes double load
+                      // onClick={() => setSignUp(true)}
                       variant="body2"
                     >
                       Already have an account? Sign in
