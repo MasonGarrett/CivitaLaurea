@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import {
   Avatar,
   Box,
@@ -21,58 +22,72 @@ import {
   UserPlus as UserPlusIcon,
   Users as UsersIcon,
 } from 'react-feather';
+import { db } from '../firebase';
+import { selectUser } from '../features/userSlice';
 import NavItem from './NavItem';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Instructor',
-  name: 'Katarina Smith',
-};
+function DashboardSidebar({ onMobileClose, openMobile }) {
+  const selectedUser = useSelector(selectUser);
+  const [nameValue, setName] = useState('');
+  const [accountValue, setAccount] = useState('');
 
-const items = [
-  {
-    href: '/app/dashboard',
-    icon: BarChartIcon,
-    title: 'Dashboard',
-  },
-  {
-    href: '/app/customers',
-    icon: UsersIcon,
-    title: 'Students',
-  },
-  {
-    href: '/app/products',
-    icon: ShoppingBagIcon,
-    title: 'Courses',
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account',
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings',
-  },
-  {
-    href: '/logout',
-    icon: LockIcon,
-    title: 'Logout',
-  },
-  // {
-  //   href: '/register',
-  //   icon: UserPlusIcon,
-  //   title: 'Register',
-  // },
-  // {
-  //   href: '/404',
-  //   icon: AlertCircleIcon,
-  //   title: 'Error',
-  // },
-];
+  db.collection('users')
+    .doc(selectedUser.uid)
+    .get()
+    .then((doc) => {
+      setName(`${doc.data().fname} ${doc.data().lname}`);
+      setAccount(doc.data().accountType);
+    });
 
-const DashboardSidebar = ({ onMobileClose, openMobile }) => {
+  const user = {
+    avatar:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/200px-No_image_3x4.svg.png',
+    jobTitle: accountValue,
+    name: nameValue,
+  };
+
+  const items = [
+    {
+      href: '/app/dashboard',
+      icon: BarChartIcon,
+      title: 'Dashboard',
+    },
+    {
+      href: '/app/customers',
+      icon: UsersIcon,
+      title: 'Students',
+    },
+    {
+      href: '/app/products',
+      icon: ShoppingBagIcon,
+      title: 'Courses',
+    },
+    {
+      href: '/app/account',
+      icon: UserIcon,
+      title: 'Account',
+    },
+    {
+      href: '/app/settings',
+      icon: SettingsIcon,
+      title: 'Settings',
+    },
+    {
+      href: '/logout',
+      icon: LockIcon,
+      title: 'Logout',
+    },
+    // {
+    //   href: '/register',
+    //   icon: UserPlusIcon,
+    //   title: 'Register',
+    // },
+    // {
+    //   href: '/404',
+    //   icon: AlertCircleIcon,
+    //   title: 'Error',
+    // },
+  ];
   const location = useLocation();
 
   useEffect(() => {
@@ -166,7 +181,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
       </Hidden>
     </>
   );
-};
+}
 
 DashboardSidebar.propTypes = {
   onMobileClose: PropTypes.func,

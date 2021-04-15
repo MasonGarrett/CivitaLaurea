@@ -154,12 +154,12 @@ export default function SignUp() {
                         onChange={(e) => setRoleValue(e.target.value)}
                       >
                         <FormControlLabel
-                          value="student"
+                          value="Student"
                           control={<Radio />}
                           label="Student"
                         />
                         <FormControlLabel
-                          value="instructor"
+                          value="Instructor"
                           control={<Radio />}
                           label="Instructor"
                         />
