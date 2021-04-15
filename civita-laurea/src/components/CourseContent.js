@@ -6,6 +6,11 @@ import { Box, Button, Card, Divider, TextField } from '@material-ui/core';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { db } from '../firebase';
 import { selectUser } from '../features/userSlice';
+import SinglePagePDFViewer from './pdf/SinglePage';
+import AllPagesPDFViewer from './pdf/AllPages';
+
+import testPDF from './pdf/test.pdf';
+import testPDF2 from './pdf/test2.pdf';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '100%',
     },
+  },
+  allPage: {
+    height: '100%',
+    maxHeight: '500px',
+    overflow: 'auto',
   },
 }));
 
@@ -42,7 +52,14 @@ export default function CourseContent() {
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
           <Box sx={{ m: 5 }}>
-            <h2>Title Placeholder</h2>
+            {/* <h4>Single Page</h4>
+            <SinglePagePDFViewer pdf={testPDF} />
+
+            <hr /> */}
+
+            <div className={classes.allPage}>
+              <AllPagesPDFViewer pdf={testPDF} />
+            </div>
           </Box>
         </Box>
       </PerfectScrollbar>
