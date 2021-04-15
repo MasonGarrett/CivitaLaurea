@@ -12,6 +12,8 @@ import SignUp from './pages/SignUp';
 import Logout from './pages/Logout';
 import CourseForm from './components/CourseForm';
 import Course from './components/Course';
+import LessonForm from './components/course/LessonForm';
+import Lesson from './components/course/Lesson';
 
 const routes = (isLoggedIn) => [
   {
@@ -24,6 +26,8 @@ const routes = (isLoggedIn) => [
       { path: 'products', element: <ProductList /> },
       { path: 'create-course', element: <CourseForm /> },
       { path: 'course', element: <Course /> },
+      { path: 'lesson', element: <Lesson /> },
+      { path: 'create-lesson', element: <LessonForm /> },
       { path: 'settings', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> },
     ],

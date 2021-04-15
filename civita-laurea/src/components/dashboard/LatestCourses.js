@@ -45,7 +45,7 @@ function LatestOrders() {
 
   return (
     <Card>
-      <CardHeader title="Latest Courses" />
+      <CardHeader title="My Courses" />
       <Divider />
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
