@@ -8,6 +8,7 @@ import TrafficByDevice from '../components/dashboard/TrafficByDevice';
 import LatestProducts from '../components/dashboard/LatestProducts';
 import LatestOrders from '../components/dashboard/LatestOrders';
 import LatestCourses from '../components/dashboard/LatestCourses';
+import AvailableCourses from '../components/dashboard/AvailableCourses';
 import Budget from '../components/dashboard/Budget';
 
 const Dashboard = () => (
@@ -47,6 +48,9 @@ const Dashboard = () => (
           </Grid> */}
           <Grid item lg={8} md={12} xl={9} xs={12}>
             <LatestCourses />
+          </Grid>
+          <Grid item lg={8} md={12} xl={9} xs={12}>
+            <AvailableCourses />
           </Grid>
         </Grid>
       </Container>
