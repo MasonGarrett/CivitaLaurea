@@ -133,8 +133,8 @@ export default function SignIn() {
                   </Grid>
                   <Grid item>
                     <Link
-                      href="#"
-                      onClick={() => setSignIn(true)}
+                      href="/register"
+                      // onClick={() => setSignIn(true)}
                       variant="body2"
                     >
                       Don't have an account? Sign Up

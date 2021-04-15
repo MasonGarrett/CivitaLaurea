@@ -27,7 +27,8 @@ const routes = (isLoggedIn) => [
   },
   {
     path: '/',
-    element: isLoggedIn ? <MainLayout /> : <SignIn />,
+    // element: isLoggedIn ? <MainLayout /> : <SignIn />,
+    element: <MainLayout />,
     children: [
       { path: 'login', element: <SignIn /> },
       { path: 'register', element: <SignUp /> },
