@@ -9,13 +9,13 @@ import Settings from './pages/Settings';
 import SignIn from './pages/SignIn';
 import DashboardLayout from './components/DashboardLayout';
 import SignUp from './pages/SignUp';
+import Logout from './pages/Logout';
 import CourseForm from './components/CourseForm';
 
-const userLocal = JSON.parse(localStorage.getItem('user'));
-const routes = () => [
+const routes = (isLoggedIn) => [
   {
     path: 'app',
-    element: userLocal ? <DashboardLayout /> : <SignIn />,
+    element: isLoggedIn ? <DashboardLayout /> : <SignIn />,
     children: [
       { path: 'account', element: <Account /> },
       { path: 'customers', element: <CustomerList /> },
@@ -32,6 +32,7 @@ const routes = () => [
     children: [
       { path: 'login', element: <SignIn /> },
       { path: 'register', element: <SignUp /> },
+      { path: 'logout', element: <Logout /> },
       { path: '404', element: <NotFound /> },
       { path: '/', element: <Navigate to="/app/dashboard" /> },
       { path: '*', element: <Navigate to="/404" /> },
