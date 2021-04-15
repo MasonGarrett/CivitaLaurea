@@ -11,12 +11,10 @@ import { login, logout, selectUser } from './features/userSlice';
 import './App.css';
 
 const App = () => {
-  const user = useSelector(async () => {
-    await selectUser;
-  });
+  // ASK MASON: not sure if this was only for the route thingy or was this for something else
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const routing = useRoutes(routes(user));
-  console.log(user);
+  const routing = useRoutes(routes());
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -27,8 +25,10 @@ const App = () => {
             email: userAuth.email,
           })
         );
+        localStorage.setItem('user', true);
       } else {
         dispatch(logout());
+        localStorage.removeItem('user');
       }
     });
     return unsubscribe;

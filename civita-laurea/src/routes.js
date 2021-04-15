@@ -11,10 +11,11 @@ import DashboardLayout from './components/DashboardLayout';
 import SignUp from './pages/SignUp';
 import CourseForm from './components/CourseForm';
 
-const routes = (isLoggedIn) => [
+const userLocal = JSON.parse(localStorage.getItem('user'));
+const routes = () => [
   {
     path: 'app',
-    element: isLoggedIn ? <DashboardLayout /> : <SignIn />,
+    element: userLocal ? <DashboardLayout /> : <SignIn />,
     children: [
       { path: 'account', element: <Account /> },
       { path: 'customers', element: <CustomerList /> },
@@ -27,7 +28,6 @@ const routes = (isLoggedIn) => [
   },
   {
     path: '/',
-    // element: isLoggedIn ? <MainLayout /> : <SignIn />,
     element: <MainLayout />,
     children: [
       { path: 'login', element: <SignIn /> },
