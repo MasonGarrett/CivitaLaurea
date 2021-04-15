@@ -6,6 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import About from './About';
+import CourseContent from './CourseContent';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,7 +64,7 @@ export default function Course() {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <h1 className={classes.title}>Test</h1>
+        <h1 className={classes.title}>Title Placeholder</h1>
         <hr />
         <Tabs
           value={value}
@@ -73,22 +75,22 @@ export default function Course() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="About" {...a11yProps(0)} />
+          <Tab label="Content" {...a11yProps(1)} />
+          {/* <Tab label="Item Three" {...a11yProps(2)} />
           <Tab label="Item Four" {...a11yProps(3)} />
           <Tab label="Item Five" {...a11yProps(4)} />
           <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="Item Seven" {...a11yProps(6)} /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <About />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <CourseContent />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
       <TabPanel value={value} index={3}>
@@ -102,7 +104,7 @@ export default function Course() {
       </TabPanel>
       <TabPanel value={value} index={6}>
         Item Seven
-      </TabPanel>
+      </TabPanel> */}
     </div>
   );
 }

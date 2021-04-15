@@ -9,49 +9,6 @@ import products from '../__mocks__/products';
 import { db } from '../firebase';
 import { selectUser } from '../features/userSlice';
 
-<<<<<<< Updated upstream
-const ProductList = () => (
-  <>
-    <Helmet>
-      {/* <title>Products | Material Kit</title> */}
-      <title>Courses</title>
-    </Helmet>
-    <Box
-      sx={{
-        backgroundColor: 'background.default',
-        minHeight: '100%',
-        py: 3,
-      }}
-    >
-      <Container maxWidth={false}>
-        <ProductListToolbar />
-        <Box sx={{ pt: 3 }}>
-          <Grid container spacing={3}>
-            {products.map((product) => (
-              <Grid item key={product.id} lg={4} md={6} xs={12}>
-                <ProductCard
-                  product={product}
-                  component={RouterLink}
-                  to="/app/course"
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            pt: 3,
-          }}
-        >
-          <Pagination color="primary" count={3} size="small" />
-        </Box>
-      </Container>
-    </Box>
-  </>
-);
-=======
 function ProductList() {
   const user = useSelector(selectUser);
   const [courses, setCourses] = useState([]);
@@ -98,7 +55,11 @@ function ProductList() {
               <div id="courses" />
               {courses.map((course) => (
                 <Grid item key={course.id} lg={4} md={6} xs={12}>
-                  <ProductCard product={course} />
+                  <ProductCard
+                    product={course}
+                    component={RouterLink}
+                    to="/app/course"
+                  />
                 </Grid>
               ))}
             </Grid>
@@ -117,6 +78,5 @@ function ProductList() {
     </>
   );
 }
->>>>>>> Stashed changes
 
 export default ProductList;
