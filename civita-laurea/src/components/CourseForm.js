@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { Box, Button, Card, Divider, TextField } from '@material-ui/core';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { selectUser } from '../features/userSlice';
 
@@ -19,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 export default function CourseForm() {
   const classes = useStyles();
   const [courseTitleValue, setCourseTitle] = React.useState('');
+
+  const navigate = useNavigate();
 
   const user = useSelector(selectUser);
 
@@ -76,6 +79,7 @@ export default function CourseForm() {
                       { merge: true }
                     );
                   });
+                navigate('/app/products');
                 alert('Course Created!');
               }}
             >
