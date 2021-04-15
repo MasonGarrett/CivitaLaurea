@@ -33,6 +33,10 @@ function AvailableCourses() {
     fetchCourses();
   }, []);
 
+  // const addCourse = (value) => {
+  //   console.log(value);
+  // };
+
   return (
     <Card>
       <CardHeader title="Available Courses" />
@@ -48,6 +52,7 @@ function AvailableCourses() {
                       product={course}
                       component={RouterLink}
                       to="/app/course"
+                      // onClick={addCourse(course.id)}
                     />
                   </Grid>
                 ))}

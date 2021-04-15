@@ -43,6 +43,8 @@ function LatestOrders() {
     fetchUser();
   }, []);
 
+  console.log(courses[0]);
+
   return (
     <Card>
       <CardHeader title="My Courses" />
@@ -52,12 +54,12 @@ function LatestOrders() {
           <Container maxWidth={false}>
             <Box sx={{ pt: 3 }}>
               <Grid container spacing={3}>
-                {courses.map((course) => (
-                  <Grid item key={course.id} lg={4} md={6} xs={12}>
+                {courses.map((course, index) => (
+                  <Grid item key={index} lg={4} md={6} xs={12}>
                     <ProductCard
                       product={course}
                       component={RouterLink}
-                      to="/app/course"
+                      to={`/app/course/${index}`}
                     />
                   </Grid>
                 ))}

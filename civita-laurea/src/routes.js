@@ -25,7 +25,7 @@ const routes = (isLoggedIn) => [
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'products', element: <ProductList /> },
       { path: 'create-course', element: <CourseForm /> },
-      { path: 'course', element: <Course /> },
+      { path: 'course/:id', element: <Course /> },
       { path: 'lesson', element: <Lesson /> },
       { path: 'create-lesson', element: <LessonForm /> },
       { path: 'settings', element: <Settings /> },
