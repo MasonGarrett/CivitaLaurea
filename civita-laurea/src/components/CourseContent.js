@@ -52,11 +52,6 @@ export default function CourseContent() {
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
           <Box sx={{ m: 5 }}>
-            {/* <h4>Single Page</h4>
-            <SinglePagePDFViewer pdf={testPDF} />
-
-            <hr /> */}
-
             <div className={classes.allPage}>
               <AllPagesPDFViewer pdf={testPDF} />
             </div>
