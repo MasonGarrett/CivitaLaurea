@@ -56,7 +56,7 @@ export default function CourseForm() {
                 e.preventDefault();
                 const course = uuid();
                 db.collection('courses').doc(course).set({
-                  coureTitle: courseTitleValue,
+                  courseTitle: courseTitleValue,
                   courseDescription: courseDescriptionValue,
                   courseStart: courseStartDate,
                   courseEnd: courseEndDate,

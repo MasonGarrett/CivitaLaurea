@@ -28,13 +28,17 @@ const ProductCard = ({ product, ...rest }) => (
           pb: 3,
         }}
       >
-        <Avatar alt="Product" src={product.media} variant="square" />
+        <Avatar
+          alt="Product"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/200px-No_image_3x4.svg.png"
+          variant="square"
+        />
       </Box>
       <Typography align="center" color="textPrimary" gutterBottom variant="h4">
-        {product.title}
+        {product.courseTitle}
       </Typography>
       <Typography align="center" color="textPrimary" variant="body1">
-        {product.description}
+        {product.courseDescription}
       </Typography>
     </CardContent>
     <Box sx={{ flexGrow: 1 }} />
@@ -55,7 +59,7 @@ const ProductCard = ({ product, ...rest }) => (
             sx={{ pl: 1 }}
             variant="body2"
           >
-            Updated 2hr ago
+            Start Date: {product.courseStart}
           </Typography>
         </Grid>
         <Grid
@@ -66,13 +70,20 @@ const ProductCard = ({ product, ...rest }) => (
           }}
         >
           {/* <GetAppIcon color="action" /> */}
+          <AccessTimeIcon color="action" />
+          <Typography
+            color="textSecondary"
+            display="inline"
+            sx={{ pl: 1 }}
+            variant="body2"
+          />
           <Typography
             color="textSecondary"
             display="inline"
             sx={{ pl: 1 }}
             variant="body2"
           >
-            {product.totalDownloads} Students
+            End Date: {product.courseEnd}
           </Typography>
         </Grid>
       </Grid>
