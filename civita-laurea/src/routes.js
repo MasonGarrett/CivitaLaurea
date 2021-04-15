@@ -11,6 +11,7 @@ import DashboardLayout from './components/DashboardLayout';
 import SignUp from './pages/SignUp';
 import Logout from './pages/Logout';
 import CourseForm from './components/CourseForm';
+import Course from './components/Course';
 
 const routes = (isLoggedIn) => [
   {
@@ -22,6 +23,7 @@ const routes = (isLoggedIn) => [
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'products', element: <ProductList /> },
       { path: 'create-course', element: <CourseForm /> },
+      { path: 'course', element: <Course /> },
       { path: 'settings', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> },
     ],

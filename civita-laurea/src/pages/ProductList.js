@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid, Pagination } from '@material-ui/core';
 import ProductListToolbar from '../components/product/ProductListToolbar';
@@ -23,7 +24,11 @@ const ProductList = () => (
           <Grid container spacing={3}>
             {products.map((product) => (
               <Grid item key={product.id} lg={4} md={6} xs={12}>
-                <ProductCard product={product} />
+                <ProductCard
+                  product={product}
+                  component={RouterLink}
+                  to="/app/course"
+                />
               </Grid>
             ))}
           </Grid>

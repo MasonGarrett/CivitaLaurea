@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
@@ -23,7 +24,11 @@ const LatestOrders = (props) => (
             <Grid container spacing={3}>
               {products.map((product) => (
                 <Grid item key={product.id} lg={4} md={6} xs={12}>
-                  <ProductCard product={product} />
+                  <ProductCard
+                    product={product}
+                    component={RouterLink}
+                    to="/app/course"
+                  />
                 </Grid>
               ))}
             </Grid>
