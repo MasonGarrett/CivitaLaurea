@@ -68,6 +68,7 @@ export default function CourseForm() {
                   lessons: [],
                   thumbsUp: 0,
                   thumbsDown: 0,
+                  students: [],
                 });
 
                 db.collection('users')
