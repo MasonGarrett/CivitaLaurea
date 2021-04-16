@@ -32,18 +32,17 @@ export default function CourseContent() {
           .get()
           .then((docCourse) => {
             for (let i = 0; i < docCourse.data().lessons.length; i += 1) {
-              setLessons((prev) => [
-                ...prev,
-                ...lessons,
-                docCourse.data().lessons[i],
-              ]);
+              db.collection('lessons')
+                .doc(docCourse.data().lessons[i])
+                .get()
+                .then((lesson) => {
+                  setLessons((prev) => [...prev, ...lessons, lesson.data()]);
+                });
             }
           });
       }
     });
   };
-
-  console.log(lessons);
 
   useEffect(() => {
     fetchUser();
