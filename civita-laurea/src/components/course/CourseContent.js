@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -8,12 +8,38 @@ import {
   Pagination,
 } from '@material-ui/core';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import courses from '../../__mocks__/courses';
 import LessonCard from '../lesson/LessonCard';
+import { db } from '../../firebase';
+import { selectUser } from '../../features/userSlice';
 
 // Component that handles the course content element of a course
 export default function CourseContent() {
+  const user = useSelector(selectUser);
+  const { id } = useParams();
+  const [course, setCourse] = useState({});
+
+  const fetchUser = async () => {
+    const response = db.collection('users');
+    const data = await response.get();
+    data.docs.forEach((dbUser) => {
+      if (dbUser.id === user.uid) {
+        const userCourses = dbUser.data().courses;
+        db.collection('courses')
+          .doc(userCourses[id])
+          .get()
+          .then((docCourse) => {
+            setCourse([docCourse.data()]);
+          });
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
   return (
     <>
       <Card>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,8 +6,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import About from './About';
 import CourseContent from './CourseContent';
+import { db } from '../../firebase';
+import { selectUser } from '../../features/userSlice';
 
 // Handles switching between tabs.
 function TabPanel(props) {
@@ -61,14 +65,41 @@ export default function Course() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  const { id } = useParams();
+
+  const user = useSelector(selectUser);
+  const [course, setCourse] = useState({});
+
+  const fetchUser = async () => {
+    const response = db.collection('users');
+    const data = await response.get();
+    data.docs.forEach((dbUser) => {
+      if (dbUser.id === user.uid) {
+        const userCourses = dbUser.data().courses;
+        db.collection('courses')
+          .doc(userCourses[id])
+          .get()
+          .then((docCourse) => {
+            setCourse([docCourse.data()]);
+          });
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  console.log();
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <h1 className={classes.title}>Title Placeholder</h1>
+        <h1 className={classes.title}>{course[0].courseTitle}</h1>
         <hr />
         <Tabs
           value={value}
@@ -84,10 +115,10 @@ export default function Course() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <About />
+        <About id={id} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CourseContent />
+        <CourseContent id={id} />
       </TabPanel>
     </div>
   );
