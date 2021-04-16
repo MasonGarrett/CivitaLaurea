@@ -46,13 +46,15 @@ export default function LessonForm() {
 
   const [fileUrl, setFileUrl] = React.useState(null);
 
+  const pdfId = uuid();
+
   const handleUploadChange = async (event) => {
     document.getElementById('submitButton').disabled = true;
     document.getElementById('submitButton').style.backgroundColor = 'gray';
     document.getElementById('submitButton').innerHTML = 'Uploading...';
     const file = event.target.files[0];
     const storageRef = firebaseApp.storage().ref();
-    const fileRef = storageRef.child(file.name);
+    const fileRef = storageRef.child(pdfId);
     await fileRef.put(file);
     setFileUrl(await fileRef.getDownloadURL());
     document.getElementById('submitButton').disabled = false;
