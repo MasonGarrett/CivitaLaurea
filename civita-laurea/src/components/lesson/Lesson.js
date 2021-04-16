@@ -25,7 +25,6 @@ export default function Lesson() {
   const { state } = useLocation();
   const { pdfUrl } = state;
 
-  // TODO will need to test on live server without cors-anywhere (look into https://firebase.google.com/docs/storage/web/download-files)
   const url = pdfUrl;
 
   return (
