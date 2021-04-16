@@ -13,13 +13,10 @@ const LessonCard = ({ lesson, ...rest }) => (
   >
     <CardContent>
       <Typography align="center" color="textPrimary" gutterBottom variant="h4">
-        {/* TODO setup for database */}
-        {/* {lesson.courseTitle} */}
-        Lesson One
+        {lesson.lessonTitle}
       </Typography>
       <Typography align="center" color="textPrimary" variant="body1">
-        {/* {lesson.courseDescription} */}
-        Programming
+        {lesson.lessonDescription}
       </Typography>
     </CardContent>
     <Box sx={{ flexGrow: 1 }} />

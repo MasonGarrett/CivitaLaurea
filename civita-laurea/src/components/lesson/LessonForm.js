@@ -56,8 +56,8 @@ export default function LessonForm() {
                 const lesson = uuid();
                 // TODO setup up add lessons to database also uploading pdf
                 db.collection('lessons').doc(lesson).set({
-                  courseTitle: lessonTitleValue,
-                  courseDescription: lessonDescriptionValue,
+                  lessonTitle: lessonTitleValue,
+                  lessonDescription: lessonDescriptionValue,
                 });
 
                 db.collection('users')

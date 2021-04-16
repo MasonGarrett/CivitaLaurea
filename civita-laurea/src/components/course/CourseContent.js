@@ -19,7 +19,7 @@ import { selectUser } from '../../features/userSlice';
 export default function CourseContent() {
   const user = useSelector(selectUser);
   const { id } = useParams();
-  const [course, setCourse] = useState({});
+  const [lessons, setLessons] = useState([]);
 
   const fetchUser = async () => {
     const response = db.collection('users');
@@ -31,11 +31,19 @@ export default function CourseContent() {
           .doc(userCourses[id])
           .get()
           .then((docCourse) => {
-            setCourse(docCourse.data());
+            for (let i = 0; i < docCourse.data().lessons.length; i += 1) {
+              setLessons((prev) => [
+                ...prev,
+                ...lessons,
+                docCourse.data().lessons[i],
+              ]);
+            }
           });
       }
     });
   };
+
+  console.log(lessons);
 
   useEffect(() => {
     fetchUser();
@@ -71,12 +79,12 @@ export default function CourseContent() {
           <Box sx={{ pt: 3 }}>
             <Grid container spacing={3}>
               <div id="courses" />
-              {courses.map((product) => (
-                <Grid item key={product.id} lg={4} md={6} xs={12}>
+              {lessons.map((lesson, index) => (
+                <Grid item key={index} lg={4} md={6} xs={12}>
                   <LessonCard
-                    product={product}
+                    lesson={lesson}
                     component={RouterLink}
-                    to="/app/lesson"
+                    to={`/app/lesson/${index}`}
                   />
                 </Grid>
               ))}
