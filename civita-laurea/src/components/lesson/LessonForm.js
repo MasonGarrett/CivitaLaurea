@@ -58,7 +58,6 @@ export default function LessonForm() {
     document.getElementById('submitButton').disabled = false;
     document.getElementById('submitButton').style.backgroundColor = '#5664d2';
     document.getElementById('submitButton').innerHTML = 'Create Lesson';
-    console.log(fileUrl);
   };
 
   const { id } = useParams();
@@ -66,13 +65,11 @@ export default function LessonForm() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const lesson = uuid();
-    console.log(fileUrl);
     db.collection('lessons').doc(lesson).set({
       lessonTitle: lessonTitleValue,
       lessonDescription: lessonDescriptionValue,
       lessonPdf: fileUrl,
     });
-    console.log(fileUrl);
     db.collection('users')
       .doc(user.uid)
       .get()
