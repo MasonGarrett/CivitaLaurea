@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { Box, Button, Card, Divider, TextField } from '@material-ui/core';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 
@@ -41,6 +41,8 @@ export default function LessonForm() {
     setLessonDescription(event.target.value);
   };
 
+  const { id } = useParams();
+
   return (
     <Card>
       <Divider />
@@ -51,9 +53,9 @@ export default function LessonForm() {
               className={classes.root}
               onSubmit={(e) => {
                 e.preventDefault();
-                const course = uuid();
+                const lesson = uuid();
                 // TODO setup up add lessons to database also uploading pdf
-                db.collection('courses').doc(course).set({
+                db.collection('lessons').doc(lesson).set({
                   courseTitle: lessonTitleValue,
                   courseDescription: lessonDescriptionValue,
                 });
@@ -61,19 +63,28 @@ export default function LessonForm() {
                 db.collection('users')
                   .doc(user.uid)
                   .get()
-                  .then((doc) => {
-                    const userCourses = doc.data().courses;
-                    const newUserCourses = [...userCourses];
-                    newUserCourses.push(course);
-                    db.collection('users').doc(user.uid).set(
-                      {
-                        courses: newUserCourses,
-                      },
-                      { merge: true }
-                    );
+                  .then((userDoc) => {
+                    const course = userDoc.data().courses[id];
+                    db.collection('courses')
+                      .doc(course)
+                      .get()
+                      .then((courseDoc) => {
+                        const courseLessons = courseDoc.data().lessons;
+                        const newCourseLessons = [...courseLessons];
+                        newCourseLessons.push(lesson);
+                        console.log(courseDoc);
+                        db.collection('courses').doc(courseDoc.id).set(
+                          {
+                            lessons: newCourseLessons,
+                          },
+                          { merge: true }
+                        );
+                      });
+                  })
+                  .then(() => {
+                    navigate(`/app/course/${id}`);
+                    alert('Lesson Added!');
                   });
-                navigate('/app/course');
-                alert('Lesson Created!');
               }}
             >
               <h2>Create Lesson</h2>

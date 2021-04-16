@@ -65,6 +65,9 @@ export default function CourseForm() {
                   courseDescription: courseDescriptionValue,
                   courseStart: courseStartDate,
                   courseEnd: courseEndDate,
+                  lessons: [],
+                  thumbsUp: 0,
+                  thumbsDown: 0,
                 });
 
                 db.collection('users')

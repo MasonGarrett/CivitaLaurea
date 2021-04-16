@@ -39,7 +39,7 @@ export default function CourseContent() {
 
   useEffect(() => {
     fetchUser();
-  });
+  }, []);
   return (
     <>
       <Card>
@@ -51,7 +51,7 @@ export default function CourseContent() {
         >
           <Button
             component={RouterLink}
-            to="/app/create-lesson"
+            to={`/app/create-lesson/${id}`}
             color="primary"
             variant="contained"
           >

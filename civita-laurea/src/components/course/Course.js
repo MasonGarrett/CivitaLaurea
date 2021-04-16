@@ -86,17 +86,13 @@ export default function Course() {
     });
   };
 
-  console.log(course);
-
   useEffect(() => {
     fetchUser();
-  });
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  console.log();
 
   return (
     <div className={classes.root}>

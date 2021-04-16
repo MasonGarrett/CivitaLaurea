@@ -30,7 +30,7 @@ export default function About() {
 
   useEffect(() => {
     fetchUser();
-  });
+  }, []);
   return (
     <Card>
       <Divider />
