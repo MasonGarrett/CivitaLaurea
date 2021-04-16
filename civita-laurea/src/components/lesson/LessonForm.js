@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { Box, Button, Card, Divider, TextField } from '@material-ui/core';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useNavigate, useParams } from 'react-router-dom';
-import { db } from '../../firebase';
+import { firebaseApp, db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 
 // Styles.
@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     display: 'none',
+  },
+  space: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -41,7 +44,57 @@ export default function LessonForm() {
     setLessonDescription(event.target.value);
   };
 
+  const [fileUrl, setFileUrl] = React.useState(null);
+
+  const handleUploadChange = async (event) => {
+    document.getElementById('submitButton').disabled = true;
+    document.getElementById('submitButton').style.backgroundColor = 'gray';
+    document.getElementById('submitButton').innerHTML = 'Uploading...';
+    const file = event.target.files[0];
+    const storageRef = firebaseApp.storage().ref();
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file);
+    setFileUrl(await fileRef.getDownloadURL());
+    document.getElementById('submitButton').disabled = false;
+    document.getElementById('submitButton').style.backgroundColor = '#5664d2';
+    document.getElementById('submitButton').innerHTML = 'Create Lesson';
+  };
+
   const { id } = useParams();
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const lesson = uuid();
+    db.collection('lessons').doc(lesson).set({
+      lessonTitle: lessonTitleValue,
+      lessonDescription: lessonDescriptionValue,
+      lessonPdf: fileUrl,
+    });
+    db.collection('users')
+      .doc(user.uid)
+      .get()
+      .then((userDoc) => {
+        const course = userDoc.data().courses[id];
+        db.collection('courses')
+          .doc(course)
+          .get()
+          .then((courseDoc) => {
+            const courseLessons = courseDoc.data().lessons;
+            const newCourseLessons = [...courseLessons];
+            newCourseLessons.push(lesson);
+            db.collection('courses').doc(courseDoc.id).set(
+              {
+                lessons: newCourseLessons,
+              },
+              { merge: true }
+            );
+          });
+      })
+      .then(() => {
+        navigate(`/app/course/${id}`);
+        alert('Lesson Added!');
+      });
+  };
 
   return (
     <Card>
@@ -49,44 +102,7 @@ export default function LessonForm() {
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
           <Box sx={{ m: 5 }}>
-            <form
-              className={classes.root}
-              onSubmit={(e) => {
-                e.preventDefault();
-                const lesson = uuid();
-                // TODO setup up add lessons to database also uploading pdf
-                db.collection('lessons').doc(lesson).set({
-                  lessonTitle: lessonTitleValue,
-                  lessonDescription: lessonDescriptionValue,
-                });
-
-                db.collection('users')
-                  .doc(user.uid)
-                  .get()
-                  .then((userDoc) => {
-                    const course = userDoc.data().courses[id];
-                    db.collection('courses')
-                      .doc(course)
-                      .get()
-                      .then((courseDoc) => {
-                        const courseLessons = courseDoc.data().lessons;
-                        const newCourseLessons = [...courseLessons];
-                        newCourseLessons.push(lesson);
-                        console.log(courseDoc);
-                        db.collection('courses').doc(courseDoc.id).set(
-                          {
-                            lessons: newCourseLessons,
-                          },
-                          { merge: true }
-                        );
-                      });
-                  })
-                  .then(() => {
-                    navigate(`/app/course/${id}`);
-                    alert('Lesson Added!');
-                  });
-              }}
-            >
+            <form className={classes.root} onSubmit={handleOnSubmit}>
               <h2>Create Lesson</h2>
               <br />
               <TextField
@@ -110,17 +126,15 @@ export default function LessonForm() {
                 variant="outlined"
               />
               <div className={classes.root}>
-                <label htmlFor="upload">
-                  <Button variant="contained" color="primary" component="span">
-                    Upload PDF
-                  </Button>
+                <label htmlFor="upload" className={classes.space}>
+                  Upload PDF
                 </label>
                 <input
                   accept="application/pdf"
-                  className={classes.input}
+                  className={classes.space}
                   id="upload"
-                  multiple
                   type="file"
+                  onChange={handleUploadChange}
                 />
               </div>
               <br />
@@ -132,6 +146,7 @@ export default function LessonForm() {
                   color="primary"
                   className={classes.margin}
                   type="submit"
+                  id="submitButton"
                 >
                   Create Lesson
                 </Button>
