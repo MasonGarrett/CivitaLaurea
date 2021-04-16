@@ -59,7 +59,7 @@ function MyCourses() {
                     <CourseCard
                       course={course}
                       component={RouterLink}
-                      to={`/app/course/${index}`}
+                      to="/app/course/"
                     />
                   </Grid>
                 ))}
