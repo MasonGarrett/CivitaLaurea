@@ -8,7 +8,7 @@ import {
   Pagination,
 } from '@material-ui/core';
 
-import { Link as RouterLink, useParams, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LessonCard from '../lesson/LessonCard';
 import { db } from '../../firebase';
@@ -19,8 +19,6 @@ export default function CourseContent() {
   const user = useSelector(selectUser);
   const { id } = useParams();
   const [lessons, setLessons] = useState([]);
-
-  const navigate = useNavigate();
 
   const fetchUser = async () => {
     const response = db.collection('users');
@@ -83,11 +81,8 @@ export default function CourseContent() {
                 <Grid item key={index} lg={4} md={6} xs={12}>
                   <LessonCard
                     lesson={lesson}
-                    onClick={() =>
-                      navigate('/app/lesson', {
-                        state: { pdfUrl: lesson.lessonPdf },
-                      })
-                    }
+                    component={RouterLink}
+                    to="/app/lesson"
                   />
                 </Grid>
               ))}

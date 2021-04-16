@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Card, Divider } from '@material-ui/core';
-import { useLocation } from 'react-router-dom';
 import AllPagesPDFViewer from '../pdf/AllPages';
+import testPDF from '../pdf/test.pdf';
 
 // Styles
 const useStyles = makeStyles((theme) => ({
@@ -22,12 +22,6 @@ const useStyles = makeStyles((theme) => ({
 // Handles the component for displaying a lesson/pdf
 export default function Lesson() {
   const classes = useStyles();
-  const { state } = useLocation();
-  const { pdfUrl } = state;
-
-  // TODO will need to test on live server without cors-anywhere (look into https://firebase.google.com/docs/storage/web/download-files)
-  const url = `https://cors-anywhere.herokuapp.com/${pdfUrl}`;
-
   return (
     <>
       <Card>
@@ -35,7 +29,7 @@ export default function Lesson() {
         <Box sx={{ minWidth: 800 }}>
           <Box sx={{ m: 5 }}>
             <div className={classes.allPage}>
-              <AllPagesPDFViewer pdf={url} />
+              <AllPagesPDFViewer pdf={testPDF} />
             </div>
           </Box>
         </Box>
