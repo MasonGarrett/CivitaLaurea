@@ -52,12 +52,12 @@ function CourseList() {
           <Box sx={{ pt: 3 }}>
             <Grid container spacing={3}>
               <div id="courses" />
-              {courses.map((course) => (
-                <Grid item key={course.id} lg={4} md={6} xs={12}>
+              {courses.map((course, index) => (
+                <Grid item key={index} lg={4} md={6} xs={12}>
                   <CourseCard
                     course={course}
                     component={RouterLink}
-                    to="/app/course"
+                    to={`/app/course/${index}`}
                   />
                 </Grid>
               ))}

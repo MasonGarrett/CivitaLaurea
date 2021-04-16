@@ -31,7 +31,7 @@ export default function CourseContent() {
           .doc(userCourses[id])
           .get()
           .then((docCourse) => {
-            setCourse([docCourse.data()]);
+            setCourse(docCourse.data());
           });
       }
     });
@@ -39,7 +39,7 @@ export default function CourseContent() {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  });
   return (
     <>
       <Card>

@@ -22,7 +22,7 @@ export default function About() {
           .doc(userCourses[id])
           .get()
           .then((docCourse) => {
-            setCourse([docCourse.data()]);
+            setCourse(docCourse.data());
           });
       }
     });
@@ -30,17 +30,17 @@ export default function About() {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  });
   return (
     <Card>
       <Divider />
       <PerfectScrollbar>
         <Box sx={{ minWidth: 800 }}>
           <Box sx={{ m: 5 }}>
-            <h2>{course[0].courseTitle}</h2>
+            <h2>{course.courseTitle}</h2>
             <hr />
             <br />
-            <p>{course[0].courseDescription}</p>
+            <p>{course.courseDescription}</p>
           </Box>
         </Box>
       </PerfectScrollbar>

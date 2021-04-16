@@ -80,15 +80,17 @@ export default function Course() {
           .doc(userCourses[id])
           .get()
           .then((docCourse) => {
-            setCourse([docCourse.data()]);
+            setCourse(docCourse.data());
           });
       }
     });
   };
 
+  console.log(course);
+
   useEffect(() => {
     fetchUser();
-  }, []);
+  });
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -99,7 +101,7 @@ export default function Course() {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <h1 className={classes.title}>{course[0].courseTitle}</h1>
+        <h1 className={classes.title}>{course.courseTitle}</h1>
         <hr />
         <Tabs
           value={value}
