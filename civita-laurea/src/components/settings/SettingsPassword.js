@@ -9,6 +9,7 @@ import {
   TextField,
 } from '@material-ui/core';
 
+// Password section of settings page.
 const SettingsPassword = (props) => {
   const [values, setValues] = useState({
     password: '',

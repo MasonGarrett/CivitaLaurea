@@ -9,9 +9,10 @@ import {
 } from '@material-ui/core';
 
 import { Link as RouterLink } from 'react-router-dom';
-import products from '../../__mocks__/products';
+import courses from '../../__mocks__/courses';
 import LessonCard from '../lesson/LessonCard';
 
+// Component that handles the course content element of a course
 export default function CourseContent() {
   return (
     <>
@@ -44,7 +45,7 @@ export default function CourseContent() {
           <Box sx={{ pt: 3 }}>
             <Grid container spacing={3}>
               <div id="courses" />
-              {products.map((product) => (
+              {courses.map((product) => (
                 <Grid item key={product.id} lg={4} md={6} xs={12}>
                   <LessonCard
                     product={product}

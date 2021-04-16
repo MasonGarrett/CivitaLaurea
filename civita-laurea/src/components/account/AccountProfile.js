@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
+// Test data
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   city: 'Los Angeles',
@@ -19,6 +20,7 @@ const user = {
   timezone: 'GTM-7',
 };
 
+// The account profile display on the account page.
 const AccountProfile = (props) => (
   <Card {...props}>
     <CardContent>

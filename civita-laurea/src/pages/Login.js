@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import { Navigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
+// Displays copyright in the footer.
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -28,6 +29,7 @@ function Copyright() {
   );
 }
 
+// Styles for login form.
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Logs the user into the system.
 export default function Login() {
   const classes = useStyles();
 

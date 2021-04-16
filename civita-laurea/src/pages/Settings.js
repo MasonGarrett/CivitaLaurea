@@ -3,6 +3,7 @@ import { Box, Container } from '@material-ui/core';
 import SettingsNotifications from '../components/settings/SettingsNotifications';
 import SettingsPassword from '../components/settings/SettingsPassword';
 
+// Logged in user settings
 const SettingsView = () => (
   <>
     <Helmet>

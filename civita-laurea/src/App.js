@@ -9,6 +9,7 @@ import GlobalStyles from './components/GlobalStyles';
 import { auth } from './firebase';
 import { login, logout, selectUser } from './features/userSlice';
 
+// Main component that checks the users state. (Logged in or Logged out)
 const App = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();

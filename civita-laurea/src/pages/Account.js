@@ -3,6 +3,7 @@ import { Box, Container, Grid } from '@material-ui/core';
 import AccountProfile from '../components/account/AccountProfile';
 import AccountProfileDetails from '../components/account/AccountProfileDetails';
 
+// Profile page for student and instructor.
 const Account = () => (
   <>
     <Helmet>

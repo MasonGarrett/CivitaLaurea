@@ -7,6 +7,7 @@ import LatestCourses from '../components/dashboard/LatestCourses';
 import AvailableCourses from '../components/dashboard/AvailableCourses';
 import NegativeFeedback from '../components/dashboard/NegativeFeedback';
 
+// The home page for student and instructor.
 const Dashboard = () => (
   <>
     <Helmet>

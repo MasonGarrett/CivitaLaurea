@@ -3,6 +3,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
+// Handles displaying all pages of PDF as a scrollable element
 export default function AllPages(props) {
   const [numPages, setNumPages] = useState(null);
 

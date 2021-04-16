@@ -10,6 +10,7 @@ import {
 import { Search as SearchIcon } from 'react-feather';
 import { Link as RouterLink } from 'react-router-dom';
 
+// Handles the toolbar component for the course lists
 const CourseListToolbar = (props) => (
   <Box {...props}>
     <Box

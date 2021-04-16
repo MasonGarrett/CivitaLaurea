@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
+// Component that handles displaying a course card.
 const CourseCard = ({ course, ...rest }) => (
   <Card
     sx={{

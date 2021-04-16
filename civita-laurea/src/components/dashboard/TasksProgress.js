@@ -10,6 +10,7 @@ import {
 import { orange } from '@material-ui/core/colors';
 import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 
+// Handles displaying the progress of the task.
 const TasksProgress = (props) => (
   <Card sx={{ height: '100%' }} {...props}>
     <CardContent>

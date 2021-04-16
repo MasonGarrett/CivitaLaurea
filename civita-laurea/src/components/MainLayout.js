@@ -29,6 +29,7 @@ const MainLayoutContent = experimentalStyled('div')({
   overflow: 'auto',
 });
 
+// The main layout of the web page.
 const MainLayout = () => (
   <MainLayoutRoot>
     <MainNavbar />

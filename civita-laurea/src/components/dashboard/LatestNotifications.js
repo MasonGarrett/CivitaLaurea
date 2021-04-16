@@ -2,6 +2,7 @@ import { Box, Button, Card, CardHeader, Divider } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
+// Handles displaying the latest notifications
 const LatestNotifications = (props) => (
   <Card {...props}>
     <CardHeader

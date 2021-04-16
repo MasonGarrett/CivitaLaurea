@@ -10,6 +10,7 @@ import {
   TextField,
 } from '@material-ui/core';
 
+// Test data
 const states = [
   {
     value: 'alabama',
@@ -25,6 +26,7 @@ const states = [
   },
 ];
 
+// The account profile details on the account page.
 const AccountProfileDetails = (props) => {
   const [values, setValues] = useState({
     firstName: 'Katarina',

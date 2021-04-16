@@ -10,6 +10,7 @@ import { green } from '@material-ui/core/colors';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
 
+// Handles displaying the positive feedback from students
 const PositiveFeedback = (props) => (
   <Card {...props}>
     <CardContent>

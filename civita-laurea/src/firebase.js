@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase config for authentication and firestore.
 const firebaseConfig = {
   apiKey: 'AIzaSyBXX6jAB3MR1lEwdEoAekQAmiJTddGkp_A',
   authDomain: 'civita-laurea.firebaseapp.com',

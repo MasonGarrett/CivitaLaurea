@@ -7,6 +7,7 @@ import CourseCard from '../course/CourseCard';
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 
+// Handles the displaying of available courses
 function AvailableCourses() {
   const user = useSelector(selectUser);
   const [courses, setCourses] = useState([]);

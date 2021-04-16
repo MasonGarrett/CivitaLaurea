@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Component that handles course creation form
 export default function CourseForm() {
   const classes = useStyles();
   const [courseTitleValue, setCourseTitle] = React.useState('');

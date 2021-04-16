@@ -4,6 +4,7 @@ import { Box, Card, Divider } from '@material-ui/core';
 import AllPagesPDFViewer from '../pdf/AllPages';
 import testPDF from '../pdf/test.pdf';
 
+// Styles
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Handles the component for displaying a lesson/pdf
 export default function Lesson() {
   const classes = useStyles();
 

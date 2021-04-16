@@ -34,6 +34,7 @@ const DashboardLayoutContent = experimentalStyled('div')({
   overflow: 'auto',
 });
 
+// The dashboard layout.
 const DashboardLayout = () => {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 

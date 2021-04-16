@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Card, Divider } from '@material-ui/core';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
+// Displays the course about information
 export default function About() {
   return (
     <Card>

@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
+// Notification settings section.
 const SettingsNotifications = (props) => (
   <form {...props}>
     <Card>
