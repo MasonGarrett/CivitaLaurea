@@ -1,4 +1,4 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
@@ -33,9 +33,34 @@ function AvailableCourses() {
     fetchCourses();
   }, []);
 
-  // const addCourse = (value) => {
-  //   console.log(value);
-  // };
+  const navigate = useNavigate();
+
+  const joinCourse = (e, index) => {
+    e.preventDefault();
+    db.collection('courses')
+      .get()
+      .then((querySnapshot) => {
+        const documents = querySnapshot.docs.map((doc) => doc);
+        db.collection('users')
+          .doc(user.uid)
+          .get()
+          .then((courseDoc) => {
+            const userCourses = courseDoc.data().courses;
+            const newUserCourses = [...userCourses];
+            newUserCourses.push(documents[index].id);
+            db.collection('users').doc(user.uid).set(
+              {
+                courses: newUserCourses,
+              },
+              { merge: true }
+            );
+          })
+          .then(() => {
+            navigate('/app/courses');
+            alert('Course Added!');
+          });
+      });
+  };
 
   return (
     <Card>
@@ -46,13 +71,18 @@ function AvailableCourses() {
           <Container maxWidth={false}>
             <Box sx={{ pt: 3 }}>
               <Grid container spacing={3}>
-                {courses.map((course) => (
-                  <Grid item key={course.id} lg={4} md={6} xs={12}>
+                {courses.map((course, index) => (
+                  <Grid item key={index} lg={4} md={6} xs={12}>
                     <CourseCard
                       course={course}
-                      component={RouterLink}
-                      to="/app/course"
-                      // onClick={addCourse(course.id)}
+                      onClick={(e) => {
+                        if (
+                          window.confirm(
+                            'Are you sure you wish to join this course?'
+                          )
+                        )
+                          joinCourse(e, index);
+                      }}
                     />
                   </Grid>
                 ))}
