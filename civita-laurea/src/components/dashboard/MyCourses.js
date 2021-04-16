@@ -17,7 +17,7 @@ import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 
 // Handles displaying the user's courses
-function LatestCourses() {
+function MyCourses() {
   const user = useSelector(selectUser);
   const [courses, setCourses] = useState([]);
 
@@ -88,4 +88,4 @@ function LatestCourses() {
   );
 }
 
-export default LatestCourses;
+export default MyCourses;

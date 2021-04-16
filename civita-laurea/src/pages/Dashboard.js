@@ -3,7 +3,7 @@ import { Box, Container, Grid } from '@material-ui/core';
 import LatestNotifications from '../components/dashboard/LatestNotifications';
 import TasksProgress from '../components/dashboard/TasksProgress';
 import PositiveFeedback from '../components/dashboard/PositiveFeedback';
-import LatestCourses from '../components/dashboard/LatestCourses';
+import MyCourses from '../components/dashboard/MyCourses';
 import AvailableCourses from '../components/dashboard/AvailableCourses';
 import NegativeFeedback from '../components/dashboard/NegativeFeedback';
 
@@ -35,7 +35,7 @@ const Dashboard = () => (
             <LatestNotifications />
           </Grid>
           <Grid item lg={8} md={12} xl={9} xs={12}>
-            <LatestCourses />
+            <MyCourses />
           </Grid>
           <Grid item lg={8} md={12} xl={9} xs={12}>
             <AvailableCourses />
