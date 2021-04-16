@@ -10,7 +10,6 @@ import {
 
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import courses from '../../__mocks__/courses';
 import LessonCard from '../lesson/LessonCard';
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
@@ -83,7 +82,7 @@ export default function CourseContent() {
                   <LessonCard
                     lesson={lesson}
                     component={RouterLink}
-                    to={`/app/lesson/${index}`}
+                    to="/app/lesson"
                   />
                 </Grid>
               ))}

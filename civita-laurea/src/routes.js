@@ -27,7 +27,7 @@ const routes = (isLoggedIn) => [
       { path: 'courses', element: <CourseList /> },
       { path: 'create-course', element: <CourseForm /> },
       { path: 'course/:id', element: <Course /> },
-      { path: 'lesson/:id', element: <Lesson /> },
+      { path: 'lesson', element: <Lesson /> },
       { path: 'create-lesson/:id', element: <LessonForm /> },
       { path: 'settings', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> },
