@@ -8,6 +8,7 @@ const LessonCard = ({ lesson, ...rest }) => (
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
+      cursor: 'pointer',
     }}
     {...rest}
   >
