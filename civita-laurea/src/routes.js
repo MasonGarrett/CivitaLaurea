@@ -1,29 +1,29 @@
 import { Navigate } from 'react-router-dom';
 import MainLayout from './components/MainLayout';
 import Account from './pages/Account';
-import CustomerList from './pages/CustomerList';
+import StudentList from './pages/StudentList';
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
-import ProductList from './pages/ProductList';
+import CourseList from './pages/CourseList';
 import Settings from './pages/Settings';
-import SignIn from './pages/SignIn';
+import Login from './pages/Login';
 import DashboardLayout from './components/DashboardLayout';
-import SignUp from './pages/SignUp';
+import Register from './pages/Register';
 import Logout from './pages/Logout';
-import CourseForm from './components/CourseForm';
-import Course from './components/Course';
-import LessonForm from './components/course/LessonForm';
-import Lesson from './components/course/Lesson';
+import CourseForm from './components/course/CourseForm';
+import Course from './components/course/Course';
+import LessonForm from './components/lesson/LessonForm';
+import Lesson from './components/lesson/Lesson';
 
 const routes = (isLoggedIn) => [
   {
     path: 'app',
-    element: isLoggedIn ? <DashboardLayout /> : <SignIn />,
+    element: isLoggedIn ? <DashboardLayout /> : <Login />,
     children: [
       { path: 'account', element: <Account /> },
-      { path: 'customers', element: <CustomerList /> },
+      { path: 'students', element: <StudentList /> },
       { path: 'dashboard', element: <Dashboard /> },
-      { path: 'products', element: <ProductList /> },
+      { path: 'courses', element: <CourseList /> },
       { path: 'create-course', element: <CourseForm /> },
       { path: 'course/:id', element: <Course /> },
       { path: 'lesson', element: <Lesson /> },
@@ -36,8 +36,8 @@ const routes = (isLoggedIn) => [
     path: '/',
     element: <MainLayout />,
     children: [
-      { path: 'login', element: <SignIn /> },
-      { path: 'register', element: <SignUp /> },
+      { path: 'login', element: <Login /> },
+      { path: 'register', element: <Register /> },
       { path: 'logout', element: <Logout /> },
       { path: '404', element: <NotFound /> },
       { path: '/', element: <Navigate to="/app/dashboard" /> },

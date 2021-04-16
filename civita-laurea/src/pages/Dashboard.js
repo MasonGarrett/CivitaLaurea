@@ -1,20 +1,16 @@
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
-import Sales from '../components/dashboard/Sales';
+import LatestNotifications from '../components/dashboard/LatestNotifications';
 import TasksProgress from '../components/dashboard/TasksProgress';
-import TotalCustomers from '../components/dashboard/TotalCustomers';
-import TotalProfit from '../components/dashboard/TotalProfit';
-import TrafficByDevice from '../components/dashboard/TrafficByDevice';
-import LatestProducts from '../components/dashboard/LatestProducts';
-import LatestOrders from '../components/dashboard/LatestOrders';
+import PositiveFeedback from '../components/dashboard/PositiveFeedback';
 import LatestCourses from '../components/dashboard/LatestCourses';
 import AvailableCourses from '../components/dashboard/AvailableCourses';
-import Budget from '../components/dashboard/Budget';
+import NegativeFeedback from '../components/dashboard/NegativeFeedback';
 
 const Dashboard = () => (
   <>
     <Helmet>
-      <title>Dashboard | Material Kit</title>
+      <title>Dashboard</title>
     </Helmet>
     <Box
       sx={{
@@ -26,26 +22,17 @@ const Dashboard = () => (
       <Container maxWidth={false}>
         <Grid container spacing={3}>
           <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <Budget />
+            <NegativeFeedback />
           </Grid>
           <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <TotalCustomers />
+            <PositiveFeedback />
           </Grid>
           <Grid item lg={3} sm={6} xl={3} xs={12}>
             <TasksProgress />
           </Grid>
-          {/* <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <TotalProfit sx={{ height: '100%' }} />
-          </Grid> */}
           <Grid item lg={8} md={12} xl={9} xs={12}>
-            <Sales />
+            <LatestNotifications />
           </Grid>
-          {/* <Grid item lg={4} md={6} xl={3} xs={12}>
-            <TrafficByDevice sx={{ height: '100%' }} />
-          </Grid> */}
-          {/* <Grid item lg={4} md={6} xl={3} xs={12}>
-            <LatestProducts sx={{ height: '100%' }} />
-          </Grid> */}
           <Grid item lg={8} md={12} xl={9} xs={12}>
             <LatestCourses />
           </Grid>

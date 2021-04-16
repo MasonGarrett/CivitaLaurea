@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import SignIn from './SignIn';
+import Login from './Login';
 import { auth } from '../firebase';
 
 export default function Logout() {
@@ -14,5 +14,5 @@ export default function Logout() {
       console.log(error);
     });
 
-  return <SignIn />;
+  return <Login />;
 }

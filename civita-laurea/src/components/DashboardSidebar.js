@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -13,13 +12,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
   Lock as LockIcon,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
   Users as UsersIcon,
 } from 'react-feather';
 import { db } from '../firebase';
@@ -42,7 +39,7 @@ function DashboardSidebar({ onMobileClose, openMobile }) {
   const user = {
     avatar:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/200px-No_image_3x4.svg.png',
-    jobTitle: accountValue,
+    accountType: accountValue,
     name: nameValue,
   };
 
@@ -53,12 +50,12 @@ function DashboardSidebar({ onMobileClose, openMobile }) {
       title: 'Dashboard',
     },
     {
-      href: '/app/customers',
+      href: '/app/students',
       icon: UsersIcon,
       title: 'Students',
     },
     {
-      href: '/app/products',
+      href: '/app/courses',
       icon: ShoppingBagIcon,
       title: 'Courses',
     },
@@ -77,16 +74,6 @@ function DashboardSidebar({ onMobileClose, openMobile }) {
       icon: LockIcon,
       title: 'Logout',
     },
-    // {
-    //   href: '/register',
-    //   icon: UserPlusIcon,
-    //   title: 'Register',
-    // },
-    // {
-    //   href: '/404',
-    //   icon: AlertCircleIcon,
-    //   title: 'Error',
-    // },
   ];
   const location = useLocation();
 
@@ -126,7 +113,7 @@ function DashboardSidebar({ onMobileClose, openMobile }) {
           {user.name}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          {user.accountType}
         </Typography>
       </Box>
       <Divider />

@@ -8,7 +8,6 @@ import theme from './theme';
 import GlobalStyles from './components/GlobalStyles';
 import { auth } from './firebase';
 import { login, logout, selectUser } from './features/userSlice';
-import './App.css';
 
 const App = () => {
   const user = useSelector(selectUser);

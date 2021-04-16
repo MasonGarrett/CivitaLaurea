@@ -12,8 +12,7 @@ import {
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import ProductCard from '../product/ProductCard';
-import products from '../../__mocks__/products';
+import CourseCard from '../course/CourseCard';
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 
@@ -48,8 +47,8 @@ function AvailableCourses() {
               <Grid container spacing={3}>
                 {courses.map((course) => (
                   <Grid item key={course.id} lg={4} md={6} xs={12}>
-                    <ProductCard
-                      product={course}
+                    <CourseCard
+                      course={course}
                       component={RouterLink}
                       to="/app/course"
                       // onClick={addCourse(course.id)}
