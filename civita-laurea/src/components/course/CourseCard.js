@@ -32,6 +32,7 @@ const CourseCard = ({ course, ...rest }) => (
           alt="Course"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/200px-No_image_3x4.svg.png"
           variant="square"
+          style={{ height: '70px', width: '70px' }}
         />
       </Box>
       <Typography align="center" color="textPrimary" gutterBottom variant="h4">
