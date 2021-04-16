@@ -43,8 +43,6 @@ function MyCourses() {
     fetchUser();
   }, []);
 
-  console.log(courses[0]);
-
   return (
     <Card>
       <CardHeader title="My Courses" />
