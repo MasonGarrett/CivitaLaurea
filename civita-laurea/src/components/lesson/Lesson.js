@@ -26,7 +26,7 @@ export default function Lesson() {
   const { pdfUrl } = state;
 
   // TODO will need to test on live server without cors-anywhere (look into https://firebase.google.com/docs/storage/web/download-files)
-  const url = `https://cors-anywhere.herokuapp.com/${pdfUrl}`;
+  const url = pdfUrl;
 
   return (
     <>
