@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { Box, Container, Typography } from '@material-ui/core';
 
+// Displays page not found to user.
 const NotFound = () => (
   <>
     <Helmet>

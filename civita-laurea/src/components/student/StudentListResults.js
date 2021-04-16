@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import getInitials from '../../utils/getInitials';
 
+// List of students.
 const StudentListResults = ({ students, ...rest }) => {
   const [selectedStudentIds, setSelectedStudentIds] = useState([]);
   const [limit, setLimit] = useState(10);

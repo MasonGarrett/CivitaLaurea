@@ -15,6 +15,7 @@ import Course from './components/course/Course';
 import LessonForm from './components/lesson/LessonForm';
 import Lesson from './components/lesson/Lesson';
 
+// Handles rerouting to designated component based on URL path.
 const routes = (isLoggedIn) => [
   {
     path: 'app',

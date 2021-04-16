@@ -4,6 +4,7 @@ import students from '../__mocks__/students';
 import StudentListResults from '../components/student/StudentListResults';
 import StudentListToolbar from '../components/student/StudentListToolbar';
 
+// List of students.
 const StudentList = () => (
   <>
     <Helmet>

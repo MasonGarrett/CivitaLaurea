@@ -23,6 +23,7 @@ import { db } from '../firebase';
 import { selectUser } from '../features/userSlice';
 import NavItem from './NavItem';
 
+// The left hand side navbar on webpage.
 function DashboardSidebar({ onMobileClose, openMobile }) {
   const selectedUser = useSelector(selectUser);
   const [nameValue, setName] = useState('');

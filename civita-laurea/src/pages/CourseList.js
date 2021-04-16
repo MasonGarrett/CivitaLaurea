@@ -8,6 +8,7 @@ import CourseCard from '../components/course/CourseCard';
 import { db } from '../firebase';
 import { selectUser } from '../features/userSlice';
 
+// Displays the list of courses the student or instructor has.
 function CourseList() {
   const user = useSelector(selectUser);
   const [courses, setCourses] = useState([]);

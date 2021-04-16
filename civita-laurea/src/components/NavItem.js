@@ -6,6 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import { Button, ListItem } from '@material-ui/core';
 
+// Handles the individual nav item.
 const NavItem = ({ href, icon: Icon, title, ...rest }) => {
   const location = useLocation();
 
